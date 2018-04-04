@@ -17,8 +17,16 @@ import com.bignerdranch.android.beatbox.databinding.ListItemSoundBinding;
 
 public class BeatBoxFragment extends Fragment{
 
+    private BeatBox mBeatbox;
+
     public static BeatBoxFragment newInstance() {
         return new BeatBoxFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBeatbox = new BeatBox(getActivity());
     }
 
     @Nullable
@@ -29,6 +37,7 @@ public class BeatBoxFragment extends Fragment{
                 .inflate(inflater, R.layout.fragment_beat_box, container, false);
 
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        binding.recyclerView.setAdapter(new SoundAdapter());
 
         return binding.getRoot();
 
