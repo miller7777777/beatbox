@@ -45,6 +45,12 @@ public class BeatBoxFragment extends Fragment{
 
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mBeatbox.release();
+    }
+
     private class SoundHolder extends RecyclerView.ViewHolder {
 
         private ListItemSoundBinding mBinding;
